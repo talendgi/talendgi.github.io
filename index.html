@@ -741,21 +741,21 @@
         </div>
     </section>
 
-                <div class="about-text fade-in">
+                <div class="about-text fade-in" >
                 </br>
-                    <p>
+                    <p style="margin-left: 1rem; margin-right: 1rem;">
                          I'm a dedicated software developer with a passion for creating efficient, 
                         scalable, and user-friendly applications. My journey in technology began 
                         with curiosity and has evolved into a professional career focused on 
                         delivering high-quality solutions.
                     </p>
-                    <p>
+                    <p style="margin-left: 1rem; margin-right: 1rem;">
                         With expertise in both frontend and backend development, I enjoy working 
                         on challenging projects that push the boundaries of what's possible. 
                         I believe in writing clean, maintainable code and staying updated with 
                         the latest industry trends and best practices.
                     </p>
-                    <p>
+                    <p style="margin-left: 1rem; margin-right: 1rem;">
                         When I'm not coding, you can find me exploring new technologies, 
                         contributing to open-source projects, or sharing knowledge with the 
                         developer community. I'm always eager to learn and grow professionally.
@@ -1047,44 +1047,74 @@ Designed Data Models for existing objects in Data Warehouse and developed jobs/p
                     </div>
                 </div>
                 
-                <div class="contact-form fade-in">
-                    <form id="contactForm" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px);">
-                        <h3 style="margin-bottom: 1.5rem; color: white;">Send Message</h3>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <input type="text" placeholder="Your Name" required 
-                                style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem;"
-                                onfocus="this.style.background='rgba(255,255,255,0.3)'"
-                                onblur="this.style.background='rgba(255,255,255,0.2)'">
-                        </div>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <input type="email" placeholder="Your Email" required
-                                style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem;"
-                                onfocus="this.style.background='rgba(255,255,255,0.3)'"
-                                onblur="this.style.background='rgba(255,255,255,0.2)'">
-                        </div>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <input type="text" placeholder="Subject" required
-                                style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem;"
-                                onfocus="this.style.background='rgba(255,255,255,0.3)'"
-                                onblur="this.style.background='rgba(255,255,255,0.2)'">
-                        </div>
-                        
-                        <div style="margin-bottom: 2rem;">
-                            <textarea placeholder="Your Message" rows="5" required
-                                style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem; resize: vertical;"
-                                onfocus="this.style.background='rgba(255,255,255,0.3)'"
-                                onblur="this.style.background='rgba(255,255,255,0.2)'"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+               <form id="contactForm" action="https://formsubmit.co/logeshm5090@gmail.com" method="POST" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px);">
+    <h3 style="margin-bottom: 1.5rem; color: white;">Send Message</h3>
+    
+    <!-- FormSubmit Configuration -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://your-website.com/thank-you.html">
+    
+    <div style="margin-bottom: 1.5rem;">
+        <input type="text" name="name" placeholder="Your Name" required 
+            style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem;">
+    </div>
+    
+    <div style="margin-bottom: 1.5rem;">
+        <input type="email" name="email" placeholder="Your Email" required
+            style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem;">
+    </div>
+    
+    <div style="margin-bottom: 1.5rem;">
+        <input type="text" name="subject" placeholder="Subject" required
+            style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem;">
+    </div>
+    
+    <div style="margin-bottom: 2rem;">
+        <textarea name="message" placeholder="Your Message" rows="5" required
+            style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; font-size: 1rem; resize: vertical;"></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" style="width: 100%;">
+        <i class="fas fa-paper-plane"></i>
+        Send Message
+    </button>
+</form>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = this.querySelector('input[name="name"]').value;
+    const email = this.querySelector('input[name="email"]').value;
+    const subject = this.querySelector('input[name="subject"]').value;
+    const message = this.querySelector('textarea[name="message"]').value;
+    
+    // Create mailto link
+    const mailtoLink = `logeshm5090@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n\n' +
+        'Message:\n' + message
+    )}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    const formMessage = document.getElementById('formMessage');
+    if (formMessage) {
+        formMessage.style.display = 'block';
+        formMessage.style.background = 'rgba(76, 175, 80, 0.3)';
+        formMessage.style.color = '#4CAF50';
+        formMessage.textContent = '✓ Opening your email client...';
+        
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+            this.reset();
+        }, 3000);
+    }
+});
+</script>
             </div>
         </div>
     </section>
@@ -1092,7 +1122,7 @@ Designed Data Models for existing objects in Data Warehouse and developed jobs/p
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Logeshwaran. All rights reserved. Built with ❤️ and lots of ☕</p>
+            <p>&copy; 2024 Logeshwaran. All rights reserved. Built with lots of ❤️ and ☕</p>
         </div>
     </footer>
 
